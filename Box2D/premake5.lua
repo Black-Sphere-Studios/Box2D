@@ -3,33 +3,48 @@
 
 workspace "Box2D"
 	location ( "Build/%{_ACTION}" )
-	architecture "x86_64"
-	configurations { "Debug", "Release" }
+	configurations { "Debug64", "Release64", "Debug32", "Release32" }
 
 	configuration "vs*"
 		defines { "_CRT_SECURE_NO_WARNINGS" }	
 
-	filter "configurations:Debug"
+	filter "configurations:Debug64"
 		targetdir ( "Build/%{_ACTION}/bin/Debug" )
 	 	defines { "DEBUG" }
+    architecture "x86_64"
 		symbols "On"
 
-	filter "configurations:Release"
+	filter "configurations:Release64"
 		targetdir ( "Build/%{_ACTION}/bin/Release" )
 		defines { "NDEBUG" }
+    architecture "x86_64"
 		optimize "On"
+  
+	filter "configurations:Debug32"
+		targetdir ( "Build/%{_ACTION}/bin/Debug32" )
+	 	defines { "DEBUG" }
+    architecture "x86"
+		symbols "On"
 
+	filter "configurations:Release32"
+		targetdir ( "Build/%{_ACTION}/bin/Release32" )
+		defines { "NDEBUG" }
+    architecture "x86"
+		optimize "On"
+    
 	filter { "language:C++", "toolset:gcc" }
 		buildoptions { "-std=c++11" }
 
 project "Box2D"
 	kind "StaticLib"
+  flags { "StaticRuntime" }
 	language "C++"
 	files { "Box2D/**.h", "Box2D/**.cpp" }
 	includedirs { "." }
 
 project "GLEW"
 	kind "StaticLib"
+  flags { "StaticRuntime" }
 	language "C++"
 	defines { "GLEW_STATIC" }
 	files { "glew/*.h", "glew/*.c" }
@@ -37,6 +52,7 @@ project "GLEW"
 
 project "GLFW"
 	kind "StaticLib"
+  flags { "StaticRuntime" }
 	language "C"
 	files {
 		"glfw/internal.h",
@@ -108,6 +124,7 @@ project "GLFW"
 
 project "IMGUI"
 	kind "StaticLib"
+  flags { "StaticRuntime" }
 	language "C++"
 	defines { "GLEW_STATIC" }
 	files { "imgui/*.h", "imgui/*.cpp" }
@@ -117,6 +134,7 @@ project "IMGUI"
 
 project "HelloWorld"
 	kind "ConsoleApp"
+  flags { "StaticRuntime" }
 	language "C++"
 	files { "HelloWorld/HelloWorld.cpp" }
 	includedirs { "." }
@@ -124,6 +142,7 @@ project "HelloWorld"
 
 project "Testbed"
 	kind "ConsoleApp"
+  flags { "StaticRuntime" }
 	language "C++"
 	defines { "GLEW_STATIC" }
 	files { "Testbed/**.h", "Testbed/**.cpp" }
