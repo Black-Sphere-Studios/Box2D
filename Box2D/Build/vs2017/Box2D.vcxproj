@@ -23,7 +23,7 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Box2D</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -67,7 +67,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>bin\Debug\</OutDir>
+    <OutDir>bin64\Debug\</OutDir>
     <IntDir>obj\Debug\Box2D\</IntDir>
     <TargetName>Box2D</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -75,9 +75,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>Box2D</TargetName>
     <TargetExt>.lib</TargetExt>
+    <IntDir>obj\Debug\x86\Box2D\</IntDir>
+    <OutDir>bin32\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>bin\Release\</OutDir>
+    <OutDir>bin64\Release\</OutDir>
     <IntDir>obj\Release\Box2D\</IntDir>
     <TargetName>Box2D</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -85,6 +87,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>Box2D</TargetName>
     <TargetExt>.lib</TargetExt>
+    <IntDir>obj\Release\x86\Box2D\</IntDir>
+    <OutDir>bin32\Release\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
