@@ -3,33 +3,20 @@
 
 workspace "Box2D"
 	location ( "Build/%{_ACTION}" )
-	configurations { "Debug64", "Release64", "Debug32", "Release32" }
+  architecture "x86_64"
+	configurations { "Debug", "Release" }
 
 	configuration "vs*"
 		defines { "_CRT_SECURE_NO_WARNINGS" }	
 
-	filter "configurations:Debug64"
+	filter "configurations:Debug"
 		targetdir ( "Build/%{_ACTION}/bin/Debug" )
 	 	defines { "DEBUG" }
-    architecture "x86_64"
 		symbols "On"
 
-	filter "configurations:Release64"
+	filter "configurations:Release"
 		targetdir ( "Build/%{_ACTION}/bin/Release" )
 		defines { "NDEBUG" }
-    architecture "x86_64"
-		optimize "On"
-  
-	filter "configurations:Debug32"
-		targetdir ( "Build/%{_ACTION}/bin/Debug32" )
-	 	defines { "DEBUG" }
-    architecture "x86"
-		symbols "On"
-
-	filter "configurations:Release32"
-		targetdir ( "Build/%{_ACTION}/bin/Release32" )
-		defines { "NDEBUG" }
-    architecture "x86"
 		optimize "On"
     
 	filter { "language:C++", "toolset:gcc" }
