@@ -1040,7 +1040,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 			float32 radius = circle->m_radius;
 			b2Vec2 axis = b2Mul(xf.q, b2Vec2(1.0f, 0.0f));
 
-			g_debugDraw->DrawSolidCircle(center, radius, axis, color);
+			g_debugDraw->DrawSolidCircle(center, radius, axis, color, fixture->m_userData);
 		}
 		break;
 
@@ -1100,7 +1100,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 				vertices[i] = b2Mul(xf, poly->m_vertices[i]);
 			}
 
-			g_debugDraw->DrawSolidPolygon(vertices, vertexCount, color);
+			g_debugDraw->DrawSolidPolygon(vertices, vertexCount, color, fixture->m_userData);
 		}
 		break;
             
